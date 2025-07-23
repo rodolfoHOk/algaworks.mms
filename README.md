@@ -118,3 +118,21 @@
 ![Transactions Flow](/files/04-transactions-flow.png)
 
 ![Microservices](/files/05-microsservices.png)
+
+[Código Fonte](/algadelivery/microsservices/)
+
+## Aula 02
+
+### 2.1 Design tático e Domain model
+
+-
+
+### 2.2 Infraestrutura de persistência com Spring Data JPA
+
+### 2.3 Domain services e REST APIs
+
+### 2.4 Spring RestClient e REST Assured
+
+## Aula 03
+
+## Aula 04
