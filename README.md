@@ -84,4 +84,27 @@
 
 ### 1.2 DDD - Domain Driven Design
 
+- Problemas de fragmentação excessiva e monólito distribuído.
+- Decompose by subdomain pattern.
+- Domínio de negócio. Domain ou Problem domain ou Business domain = Área de conhecimento.
+- Domain Driven Design: design do software guiado pelo domínio do negócio, e não o contrário.
+- Modelo de domínio: representação do domínio como solução de software.
+- Espaço do problema (domínio) e espaço da solução (modelo do domínio).
+- Design estratégico: Conecta problema (separar domínio em partes menores) e solução (design do software).
+- Separação em subdomínios:
+  - Uma opção os departamentos do negócio é uma separação prática do domínio.
+  - Departamentos podem ser separados em mais de um subdomínio.
+  - Termos diferentes para a mesma coisa pode indicar subdomínios diferentes.
+  - Termos ambíguos, significados diferentes para um mesmo termo pode indicar subdomínios diferentes, neste caso necessitam diferenciação caso façam parte do mesmo subdomínio.
+- Tipos de Subdomínio:
+  - Core: núcleo principal, mais importante. Exige melhores implementações.
+  - Supporting: menor importância. Investir menos esforço.
+  - Generic: existentes em muitos domínios de negócio.
+- Nem todo subdomain identificado vai ser implementado como código.
+- Domain model: Abstração do problema de negócio.
+- Significado das coisas muda conforme o contexto.
+- Contexto é rei.
+- Bounded context, contexto delimitado.
+- Ubiquitous language, Linguagem ubíqua ou linguagem onipresente.
+
 ### 1.3 Preparando e Modelando a Arquitetura do Projeto
