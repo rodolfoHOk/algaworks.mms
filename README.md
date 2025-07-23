@@ -109,29 +109,75 @@
 
 ### 1.3 Preparando e Modelando a Arquitetura do Projeto
 
-![DDD P1](/files/01-project-ddd-p1.png)
+![DDD P1](/files/a1/01-project-ddd-p1.png)
 
-![DDD P2](/files/02-project-ddd-p2.png)
+![DDD P2](/files/a1/02-project-ddd-p2.png)
 
-![Contexts -> Microservices](/files/03-contexts-microservices.png)
+![Contexts -> Microservices](/files/a1/03-contexts-microservices.png)
 
-![Transactions Flow](/files/04-transactions-flow.png)
+![Transactions Flow](/files/a1/04-transactions-flow.png)
 
-![Microservices](/files/05-microsservices.png)
+![Microservices](/files/a1/05-microsservices.png)
 
-[Código Fonte](/algadelivery/microsservices/)
+### 1.4 Código Fonte
+
+[Link](/algadelivery/microsservices/)
 
 ## Aula 02
 
 ### 2.1 Design tático e Domain model
 
--
+Design tático: Building block
+
+![Design tático](/files/a2/01-tactical-design.png)
+
+Domain Model
+
+![Domain Model](/files/a2/02-domain-model.png)
+
+Entity
+
+![Entity 1](/files/a2/03-entity.png)
+
+![Entity 2](/files/a2/04-entity.png)
+
+Value Object
+
+![Value Object 1](/files/a2/05-value-object.png)
+
+![Value Object 2](/files/a2/06-value-object.png)
+
+Aggregate
+
+![Aggregate](/files/a2/07-aggregate.png)
+
+Domain driven design
+
+![DDD](/files/a2/08-DDD.png)
+
+Camadas
+
+![Layers](/files/a2/09-Layers.png)
+
+Inversão de dependências (interfaces)
+
+![Inversão de dependências](/files/a2/10-dependencies-inversion.png)
+
+UML
+
+![UML 1](/files/a2/11-UML.png)
+
+![UML 2](/files/a2/12-UML.png)
 
 ### 2.2 Infraestrutura de persistência com Spring Data JPA
 
 ### 2.3 Domain services e REST APIs
 
 ### 2.4 Spring RestClient e REST Assured
+
+### 2.5 Código Fonte
+
+[Link](/algadelivery/microsservices/)
 
 ## Aula 03
 
