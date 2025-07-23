@@ -108,3 +108,13 @@
 - Ubiquitous language, Linguagem ubíqua ou linguagem onipresente.
 
 ### 1.3 Preparando e Modelando a Arquitetura do Projeto
+
+![DDD P1](/files/01-project-ddd-p1.png)
+
+![DDD P2](/files/02-project-ddd-p2.png)
+
+![Contexts -> Microservices](/files/03-contexts-microservices.png)
+
+![Transactions Flow](/files/04-transactions-flow.png)
+
+![Microservices](/files/05-microsservices.png)
