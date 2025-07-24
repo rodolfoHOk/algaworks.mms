@@ -1,0 +1,84 @@
+@DeliveryUrl=http://localhost:8080
+
+@CourierUrl=http://localhost:8081
+
+### Create delivery draft
+POST {{DeliveryUrl}}/api/v1/deliveries
+Content-Type: application/json
+
+{
+  "sender": {
+    "zipCode": "01001-000",
+    "street": "Rua da Consolação",
+    "number": "123",
+    "name": "João Silva",
+    "phone": "11999998888",
+    "complement": "Apto 10"
+  },
+  "recipient": {
+    "zipCode": "01001-000",
+    "street": "Rua da Consolação",
+    "number": "123",
+    "name": "João Silva",
+    "phone": "11999998888",
+    "complement": "Apto 10"
+  },
+  "items": [
+    {
+      "name": "Livro de Java",
+      "quantity": 2
+    }
+  ]
+}
+
+### DeliveryId
+@DeliveryId=556ebf84-5403-4882-9677-77dd7188b394
+
+### Update delivery
+PUT {{DeliveryUrl}}/api/v1/deliveries/{{DeliveryId}}
+Content-Type: application/json
+
+{
+  "sender": {
+    "zipCode": "01001-000",
+    "street": "Rua da Consolação",
+    "number": "123",
+    "name": "João Silva",
+    "phone": "11999998888",
+    "complement": "Apto 10"
+  },
+  "recipient": {
+    "zipCode": "01001-000",
+    "street": "Rua da Consolação",
+    "number": "123",
+    "name": "João Silva",
+    "phone": "11999998888",
+    "complement": "Apto 10"
+  },
+  "items": [
+    {
+      "name": "Livro de Spring",
+      "quantity": 2
+    }
+  ]
+}
+
+### List paged deliveries
+GET {{DeliveryUrl}}/api/v1/deliveries?size=1&page=0
+
+### Find delivery by ID
+GET {{DeliveryUrl}}/api/v1/deliveries/{{DeliveryId}}
+
+### Delivery placement
+POST {{DeliveryUrl}}/api/v1/deliveries/{{DeliveryId}}/placement
+
+### Delivery pickups
+POST {{DeliveryUrl}}/api/v1/deliveries/{{DeliveryId}}/pickups
+Content-Type: application/json
+
+{
+  "courierId": "981d0657-deed-4ed3-8440-8a40f4b6bd34"
+}
+
+### Delivery completion
+POST {{DeliveryUrl}}/api/v1/deliveries/{{DeliveryId}}/completion
