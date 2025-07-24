@@ -9,9 +9,11 @@ import br.com.hiokdev.algadelivery.delivery.tracking.domain.model.Delivery;
 import br.com.hiokdev.algadelivery.delivery.tracking.domain.repository.DeliveryRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.UUID;
 
 @Service
@@ -20,6 +22,10 @@ public class DeliveryPreparationService {
 
     private final DeliveryRepository deliveryRepository;
     private final DeliveryTimeEstimationService deliveryTimeEstimationService;
+    private final CourierPayoutCalculationService courierPayoutCalculationService;
+
+    @Value("${app.distance-fee-factor}")
+    private String distanceFeeFactor;
 
     @Transactional
     public Delivery draft(DeliveryInput input) {
@@ -42,7 +48,7 @@ public class DeliveryPreparationService {
         ContactPoint recipient = input.getRecipient().toDomain();
         DeliveryEstimate estimate = deliveryTimeEstimationService.estimate(sender, recipient);
 
-        BigDecimal calculatedPayout = calculatePayout(estimate.getDistanceInKm());
+        BigDecimal calculatedPayout = courierPayoutCalculationService.calculatePayout(estimate.getDistanceInKm());
         BigDecimal distanceFee = calculateDistanceFee(estimate.getDistanceInKm());
 
         Delivery.PreparationDetails preparationDetails = Delivery.PreparationDetails.builder()
@@ -60,12 +66,10 @@ public class DeliveryPreparationService {
         }
     }
 
-    private BigDecimal calculatePayout(Double distanceInKm) {
-        return new BigDecimal("10");
-    }
-
     private BigDecimal calculateDistanceFee(Double distanceInKm) {
-        return new BigDecimal("10");
+        return new BigDecimal(distanceFeeFactor)
+                .multiply(new BigDecimal(distanceInKm))
+                .setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }

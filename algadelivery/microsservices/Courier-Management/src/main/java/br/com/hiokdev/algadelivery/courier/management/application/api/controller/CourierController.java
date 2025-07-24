@@ -1,6 +1,9 @@
 package br.com.hiokdev.algadelivery.courier.management.application.api.controller;
 
 import br.com.hiokdev.algadelivery.courier.management.application.dto.CourierInput;
+import br.com.hiokdev.algadelivery.courier.management.application.dto.CourierPayoutCalculationInput;
+import br.com.hiokdev.algadelivery.courier.management.application.dto.CourierPayoutResultModel;
+import br.com.hiokdev.algadelivery.courier.management.application.service.CourierPayoutService;
 import br.com.hiokdev.algadelivery.courier.management.application.service.CourierRegistrationService;
 import br.com.hiokdev.algadelivery.courier.management.domain.model.Courier;
 import br.com.hiokdev.algadelivery.courier.management.domain.repository.CourierRepository;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @RestController
@@ -28,6 +32,7 @@ import java.util.UUID;
 public class CourierController {
 
     private final CourierRegistrationService courierRegistrationService;
+    private final CourierPayoutService courierPayoutService;
     private final CourierRepository courierRepository;
 
     @PostMapping
@@ -51,6 +56,12 @@ public class CourierController {
     public Courier findById(@PathVariable UUID courierId) {
         return courierRepository.findById(courierId)
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    @PostMapping("/payout-calculation")
+    public CourierPayoutResultModel calculate(@RequestBody CourierPayoutCalculationInput input) {
+        BigDecimal courierPayout = courierPayoutService.calculate(input.getDistanceInKm());
+        return new CourierPayoutResultModel(courierPayout);
     }
 
 }

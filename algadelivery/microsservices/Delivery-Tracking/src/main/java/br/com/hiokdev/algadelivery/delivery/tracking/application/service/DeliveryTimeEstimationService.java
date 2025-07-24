@@ -4,5 +4,7 @@ import br.com.hiokdev.algadelivery.delivery.tracking.application.dto.DeliveryEst
 import br.com.hiokdev.algadelivery.delivery.tracking.domain.model.ContactPoint;
 
 public interface DeliveryTimeEstimationService {
+
     DeliveryEstimate estimate(ContactPoint sender, ContactPoint receiver);
+
 }

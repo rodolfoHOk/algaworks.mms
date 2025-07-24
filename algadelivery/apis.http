@@ -32,7 +32,7 @@ Content-Type: application/json
 }
 
 ### DeliveryId
-@DeliveryId=556ebf84-5403-4882-9677-77dd7188b394
+@DeliveryId=e3d566d2-4174-40b9-91ad-f04b732988c5
 
 ### Update delivery
 PUT {{DeliveryUrl}}/api/v1/deliveries/{{DeliveryId}}
@@ -109,3 +109,11 @@ GET {{CourierUrl}}/api/v1/couriers?size=1&page=0
 
 ### Find courier by ID
 GET {{CourierUrl}}/api/v1/couriers/{{CourierId}}
+
+### Calculate courier payload
+POST {{CourierUrl}}/api/v1/couriers/payout-calculation
+Content-Type: application/json
+
+{
+  "distanceInKm": 5.5
+}

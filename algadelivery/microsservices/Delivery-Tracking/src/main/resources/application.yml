@@ -9,3 +9,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/deliverydb
     username: postgres
     password: postgres
+
+app:
+  distance-fee-factor: 3
+  courier-api-url: http://localhost:8081
