@@ -227,6 +227,38 @@ Event-driven patterns
 
 ### 3.2 Padrões de microsserviços
 
+#### Api Gateway
+
+![Api Gateway 1](/files/a3/14-api-gateway.png)
+
+![Api Gateway 2](/files/a3/15-api-gateway.png)
+
+![Api Gateway 3](/files/a3/16-api-gateway.png)
+
+![Api Gateway 4](/files/a3/17-api-gateway.png)
+
+![Api Gateway 5](/files/a3/18-api-gateway.png)
+
+Service Registry Pattern
+
+![Api Gateway 6](/files/a3/19-api-gateway.png)
+
+Self Registration Pattern
+
+![Api Gateway 7](/files/a3/20-api-gateway.png)
+
+![Api Gateway 8](/files/a3/21-api-gateway.png)
+
+Client-side Service Discovery Pattern
+
+![Api Gateway 9](/files/a3/22-api-gateway.png)
+
+Server-side Service Discovery Pattern
+
+![Api Gateway 10](/files/a3/23-api-gateway.png)
+
+[Código Fonte](/algadelivery/microsservices/)
+
 ### 3.3 Padrões de resiliência
 
 ## Aula 04
