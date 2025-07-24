@@ -32,7 +32,7 @@ Content-Type: application/json
 }
 
 ### DeliveryId
-@DeliveryId=e3d566d2-4174-40b9-91ad-f04b732988c5
+@DeliveryId=aca81ccd-25f0-4a37-a86b-622c8d7805bb
 
 ### Update delivery
 PUT {{DeliveryUrl}}/api/v1/deliveries/{{DeliveryId}}

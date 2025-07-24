@@ -9,7 +9,18 @@ spring:
     url: jdbc:postgresql://localhost:5432/deliverydb
     username: postgres
     password: postgres
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping:
+          delivery-placed-event:br.com.hiokdev.algadelivery.delivery.tracking.domain.event.DeliveryPlacedEvent,
+          delivery-picked-up-event:br.com.hiokdev.algadelivery.delivery.tracking.domain.event.DeliveryPickUpEvent,
+          delivery-fulfilled-event:br.com.hiokdev.algadelivery.delivery.tracking.domain.event.DeliveryFulfilledEvent
 
 app:
   distance-fee-factor: 3
   courier-api-url: http://localhost:8081
+  delivery-events-topic-name: deliveries.v1.events

@@ -1,0 +1,18 @@
+package br.com.hiokdev.algadelivery.delivery.tracking.domain.event;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
+
+import java.time.OffsetDateTime;
+import java.util.UUID;
+
+@AllArgsConstructor
+@Getter
+@ToString
+public class DeliveryPickUpEvent {
+
+    private final OffsetDateTime occurredAt;
+    private final UUID deliveryId;
+
+}

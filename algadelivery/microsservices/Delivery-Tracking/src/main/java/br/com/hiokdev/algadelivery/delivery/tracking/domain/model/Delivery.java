@@ -1,5 +1,8 @@
 package br.com.hiokdev.algadelivery.delivery.tracking.domain.model;
 
+import br.com.hiokdev.algadelivery.delivery.tracking.domain.event.DeliveryFulfilledEvent;
+import br.com.hiokdev.algadelivery.delivery.tracking.domain.event.DeliveryPickUpEvent;
+import br.com.hiokdev.algadelivery.delivery.tracking.domain.event.DeliveryPlacedEvent;
 import br.com.hiokdev.algadelivery.delivery.tracking.domain.exception.DomainException;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
@@ -16,6 +19,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.domain.AbstractAggregateRoot;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -29,8 +33,8 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Getter
 @Setter(AccessLevel.PRIVATE)
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Delivery {
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+public class Delivery extends AbstractAggregateRoot<Delivery> {
 
     @Id
     @EqualsAndHashCode.Include
@@ -128,17 +132,20 @@ public class Delivery {
         verifyIfCanBePlaced();
         this.changeStatusTo(DeliveryStatus.WAITING_FOR_COURIER);
         this.setPlacedAt(OffsetDateTime.now());
+        super.registerEvent(new DeliveryPlacedEvent(this.getPlacedAt(), this.getId()));
     }
 
     public void pickUp(UUID courierId) {
         this.setCourierId(courierId);
         this.changeStatusTo(DeliveryStatus.IN_TRANSIT);
         this.setAssignedAt(OffsetDateTime.now());
+        super.registerEvent(new DeliveryPickUpEvent(this.getAssignedAt(), this.getId()));
     }
 
     public void markAsDelivered() {
         this.changeStatusTo(DeliveryStatus.DELIVERED);
         this.setFulfilledAt(OffsetDateTime.now());
+        super.registerEvent(new DeliveryFulfilledEvent(this.getFulfilledAt(), this.getId()));
     }
 
     private void calculateTotalItems() {
