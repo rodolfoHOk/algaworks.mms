@@ -25,5 +25,13 @@ spring:
           delivery-picked-up-event:com.fasterxml.jackson.databind.JsonNode,
           delivery-fulfilled-event:br.com.hiokdev.algadelivery.courier.management.infrastructure.event.DeliveryFulfilledIntegrationEvent
 
+eureka:
+  client:
+    server-url:
+      default-zone: http://localhost:8761/eureka/
+    instance:
+      instance-id: ${random.value}
+      prefer-ip-address: true
+
 app:
   courier-payout-factor: 10

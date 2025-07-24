@@ -20,7 +20,15 @@ spring:
           delivery-picked-up-event:br.com.hiokdev.algadelivery.delivery.tracking.domain.event.DeliveryPickUpEvent,
           delivery-fulfilled-event:br.com.hiokdev.algadelivery.delivery.tracking.domain.event.DeliveryFulfilledEvent
 
+eureka:
+  client:
+    server-url:
+      default-zone: http://localhost:8761/eureka/
+    instance:
+      instance-id: ${random.value}
+      prefer-ip-address: true
+
 app:
   distance-fee-factor: 3
-  courier-api-url: http://localhost:8081
+  courier-api-name: http://courier-management
   delivery-events-topic-name: deliveries.v1.events
