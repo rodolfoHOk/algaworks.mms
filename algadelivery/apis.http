@@ -82,3 +82,30 @@ Content-Type: application/json
 
 ### Delivery completion
 POST {{DeliveryUrl}}/api/v1/deliveries/{{DeliveryId}}/completion
+
+### Create courier
+POST {{CourierUrl}}/api/v1/couriers
+Content-Type: application/json
+
+{
+  "name": "Maria Entregadora",
+  "phone": "11987654321"
+}
+
+### CourierId
+@CourierId=68740ddb-8662-4b04-89a3-13a2d83d9988
+
+### Edit courier
+PUT {{CourierUrl}}/api/v1/couriers/{{CourierId}}
+Content-Type: application/json
+
+{
+  "name": "Maria Silva",
+  "phone": "11987654321"
+}
+
+### List paged couriers
+GET {{CourierUrl}}/api/v1/couriers?size=1&page=0
+
+### Find courier by ID
+GET {{CourierUrl}}/api/v1/couriers/{{CourierId}}

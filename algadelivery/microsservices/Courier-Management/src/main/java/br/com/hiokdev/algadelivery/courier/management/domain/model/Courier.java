@@ -53,7 +53,7 @@ public class Courier {
     }
 
     public List<AssignedDelivery> getPendingDeliveries() {
-        return Collections.unmodifiableList(this.getPendingDeliveries());
+        return Collections.unmodifiableList(this.pendingDeliveries);
     }
 
     public void assign(UUID deliveryId) {
