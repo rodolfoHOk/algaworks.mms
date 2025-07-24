@@ -1,4 +1,4 @@
-package br.com.hiokdev.algadelivery.delivery.traking.domain.model;
+package br.com.hiokdev.algadelivery.delivery.tracking.domain.model;
 
 import org.junit.jupiter.api.Test;
 

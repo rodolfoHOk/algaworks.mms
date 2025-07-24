@@ -1,4 +1,4 @@
-package br.com.hiokdev.algadelivery.delivery.traking;
+package br.com.hiokdev.algadelivery.delivery.tracking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

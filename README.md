@@ -119,9 +119,7 @@
 
 ![Microservices](/files/a1/05-microsservices.png)
 
-### 1.4 Código Fonte
-
-[Link](/algadelivery/microsservices/)
+[Código Fonte](/algadelivery/microsservices/)
 
 ## Aula 02
 
@@ -169,15 +167,19 @@ UML
 
 ![UML 2](/files/a2/12-UML.png)
 
+[Código Fonte](/algadelivery/microsservices/)
+
 ### 2.2 Infraestrutura de persistência com Spring Data JPA
+
+[Código Fonte](/algadelivery/microsservices/)
 
 ### 2.3 Domain services e REST APIs
 
+[Código Fonte](/algadelivery/microsservices/)
+
 ### 2.4 Spring RestClient e REST Assured
 
-### 2.5 Código Fonte
-
-[Link](/algadelivery/microsservices/)
+[Código Fonte](/algadelivery/microsservices/)
 
 ## Aula 03
 

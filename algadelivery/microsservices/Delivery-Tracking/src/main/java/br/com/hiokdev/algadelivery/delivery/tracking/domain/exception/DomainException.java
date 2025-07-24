@@ -1,4 +1,4 @@
-package br.com.hiokdev.algadelivery.delivery.traking.domain.exception;
+package br.com.hiokdev.algadelivery.delivery.tracking.domain.exception;
 
 public class DomainException extends RuntimeException {
 

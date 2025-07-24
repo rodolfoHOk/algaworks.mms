@@ -1,34 +1,37 @@
-package br.com.hiokdev.algadelivery.delivery.traking.domain.model;
+package br.com.hiokdev.algadelivery.delivery.tracking.domain.repository;
 
-import br.com.hiokdev.algadelivery.delivery.traking.domain.exception.DomainException;
+import br.com.hiokdev.algadelivery.delivery.tracking.domain.model.ContactPoint;
+import br.com.hiokdev.algadelivery.delivery.tracking.domain.model.Delivery;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.math.BigDecimal;
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DeliveryTest {
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+class DeliveryRepositoryTest {
+
+    @Autowired
+    private DeliveryRepository deliveryRepository;
 
     @Test
-    void shouldChangeToPlaced() {
+    void shouldPersist() {
         Delivery delivery = Delivery.draft();
         delivery.editPreparationDetails(createValidPreparationDetails());
-        delivery.place();
+        delivery.addItem("Computador", 2);
+        delivery.addItem("Notebook", 2);
 
-        assertEquals(DeliveryStatus.WAITING_FOR_COURIER, delivery.getStatus());
-        assertNotNull(delivery.getPlacedAt());
+        deliveryRepository.saveAndFlush(delivery);
+
+        Delivery persistedDelivery = deliveryRepository.findById(delivery.getId()).orElseThrow();
+        assertEquals(2, persistedDelivery.getItems().size());
     }
 
-    @Test
-    void shouldNotPlaced() {
-        Delivery delivery = Delivery.draft();
-
-        assertThrows(DomainException.class, delivery::place);
-
-        assertEquals(DeliveryStatus.DRAFT, delivery.getStatus());
-        assertNull(delivery.getPlacedAt());
-    }
 
     private Delivery.PreparationDetails createValidPreparationDetails() {
         ContactPoint sender = ContactPoint.builder()
