@@ -183,4 +183,50 @@ UML
 
 ## Aula 03
 
+### 3.1 Domain events, Event-driven architecture e Kafka
+
+#### Domain event
+
+Event publish
+
+![Event publish](/files/a3/01-event-publish.png)
+
+Event listener
+
+![Event listener](/files/a3/02-event-listener.png)
+
+#### Event-driven architecture
+
+![Event-driven architecture](/files/a3/03-event-driven-architecture.png)
+
+Event-driven patterns
+
+![Event-driven patterns 1](/files/a3/04-event-driven-patterns.png)
+
+![Event-driven patterns 2](/files/a3/05-event-driven-patterns.png)
+
+![Event-driven patterns 3](/files/a3/06-event-driven-patterns.png)
+
+#### Kafka
+
+![Kafka 1](/files/a3/07-kafka.png)
+
+![Kafka 2](/files/a3/08-kafka.png)
+
+![Kafka 3](/files/a3/09-kafka.png)
+
+![Kafka 4](/files/a3/10-kafka.png)
+
+![Kafka 5](/files/a3/11-kafka.png)
+
+![Kafka 6](/files/a3/12-kafka.png)
+
+![Kafka 7](/files/a3/13-kafka.png)
+
+[Código Fonte](/algadelivery/microsservices/)
+
+### 3.2 Padrões de microsserviços
+
+### 3.3 Padrões de resiliência
+
 ## Aula 04
