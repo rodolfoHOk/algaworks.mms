@@ -1,6 +1,9 @@
-@DeliveryUrl=http://localhost:8080
+@GatewayUrl=http://localhost:9999
 
-@CourierUrl=http://localhost:8081
+# @DeliveryUrl=http://localhost:8080
+@DeliveryUrl={{GatewayUrl}}
+# @CourierUrl=http://localhost:8081
+@CourierUrl={{GatewayUrl}}
 
 ### Create delivery draft
 POST {{DeliveryUrl}}/api/v1/deliveries
@@ -64,7 +67,7 @@ Content-Type: application/json
 }
 
 ### List paged deliveries
-GET {{DeliveryUrl}}/api/v1/deliveries?size=1&page=0
+GET {{DeliveryUrl}}/api/v1/deliveries?size=5&page=0
 
 ### Find delivery by ID
 GET {{DeliveryUrl}}/api/v1/deliveries/{{DeliveryId}}
@@ -100,12 +103,12 @@ PUT {{CourierUrl}}/api/v1/couriers/{{CourierId}}
 Content-Type: application/json
 
 {
-  "name": "Maria Silva",
-  "phone": "11987654321"
+  "name": "João Batista",
+  "phone": "11933331111"
 }
 
 ### List paged couriers
-GET {{CourierUrl}}/api/v1/couriers?size=1&page=0
+GET {{CourierUrl}}/api/v1/couriers?size=5&page=0
 
 ### Find courier by ID
 GET {{CourierUrl}}/api/v1/couriers/{{CourierId}}
@@ -117,3 +120,9 @@ Content-Type: application/json
 {
   "distanceInKm": 5.5
 }
+
+### List paged public couriers
+GET {{CourierUrl}}/public/couriers?size=5&page=0
+
+### Find public courier by ID
+GET {{CourierUrl}}/public/couriers/{{CourierId}}
