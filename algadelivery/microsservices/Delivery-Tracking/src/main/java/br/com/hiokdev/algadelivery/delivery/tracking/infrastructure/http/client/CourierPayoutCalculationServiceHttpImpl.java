@@ -5,6 +5,7 @@ import br.com.hiokdev.algadelivery.delivery.tracking.infrastructure.http.dto.Cou
 import br.com.hiokdev.algadelivery.delivery.tracking.infrastructure.http.dto.CourierPayoutResultModel;
 import br.com.hiokdev.algadelivery.delivery.tracking.infrastructure.http.exception.BadGatewayException;
 import br.com.hiokdev.algadelivery.delivery.tracking.infrastructure.http.exception.GatewayTimeoutException;
+import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
@@ -26,7 +27,7 @@ public class CourierPayoutCalculationServiceHttpImpl implements CourierPayoutCal
             return courierPayoutResultModel.getPayoutFee();
         } catch (ResourceAccessException e) {
             throw new GatewayTimeoutException(e);
-        } catch (HttpServerErrorException | IllegalArgumentException e) {
+        } catch (HttpServerErrorException | CallNotPermittedException | IllegalArgumentException e) {
             throw new BadGatewayException(e);
         }
     }
