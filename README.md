@@ -261,4 +261,26 @@ Server-side Service Discovery Pattern
 
 ### 3.3 Padrões de resiliência
 
+![Padrões de resiliência 1](/files/a3/24-resilience-patterns.png)
+
+Timeout pattern
+
+![Timeout pattern 1](/files/a3/25-timeout-pattern.png)
+
+![Timeout pattern 2](/files/a3/26-timeout-pattern.png)
+
+Retry pattern
+
+![Retry pattern](/files/a3/27-retry-pattern.png)
+
+Circuit Breaker
+
+![Circuit Breaker 1](/files/a3/28-circuit-breaker.png)
+
+![Circuit Breaker 2](/files/a3/29-circuit-breaker.png)
+
+![Circuit Breaker 3](/files/a3/30-circuit-breaker.png)
+
+[Código Fonte](/algadelivery/microsservices/)
+
 ## Aula 04

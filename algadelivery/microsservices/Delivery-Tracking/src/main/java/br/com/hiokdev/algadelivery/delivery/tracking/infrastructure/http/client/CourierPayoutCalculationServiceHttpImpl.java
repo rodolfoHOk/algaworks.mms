@@ -3,8 +3,12 @@ package br.com.hiokdev.algadelivery.delivery.tracking.infrastructure.http.client
 import br.com.hiokdev.algadelivery.delivery.tracking.application.service.CourierPayoutCalculationService;
 import br.com.hiokdev.algadelivery.delivery.tracking.infrastructure.http.dto.CourierPayoutCalculationInput;
 import br.com.hiokdev.algadelivery.delivery.tracking.infrastructure.http.dto.CourierPayoutResultModel;
+import br.com.hiokdev.algadelivery.delivery.tracking.infrastructure.http.exception.BadGatewayException;
+import br.com.hiokdev.algadelivery.delivery.tracking.infrastructure.http.exception.GatewayTimeoutException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.math.BigDecimal;
 
@@ -16,9 +20,15 @@ public class CourierPayoutCalculationServiceHttpImpl implements CourierPayoutCal
 
     @Override
     public BigDecimal calculatePayout(Double distanceInKm) {
-        CourierPayoutResultModel courierPayoutResultModel = courierAPIClient
-                .payoutCalculation(new CourierPayoutCalculationInput(distanceInKm));
-        return courierPayoutResultModel.getPayoutFee();
+        try {
+            CourierPayoutResultModel courierPayoutResultModel = courierAPIClient
+                    .payoutCalculation(new CourierPayoutCalculationInput(distanceInKm));
+            return courierPayoutResultModel.getPayoutFee();
+        } catch (ResourceAccessException e) {
+            throw new GatewayTimeoutException(e);
+        } catch (HttpServerErrorException | IllegalArgumentException e) {
+            throw new BadGatewayException(e);
+        }
     }
 
 }

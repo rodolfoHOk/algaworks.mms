@@ -9,6 +9,8 @@ import br.com.hiokdev.algadelivery.courier.management.domain.model.Courier;
 import br.com.hiokdev.algadelivery.courier.management.domain.repository.CourierRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedModel;
@@ -24,11 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
+import java.util.Random;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/couriers")
 @RequiredArgsConstructor
+@Slf4j
 public class CourierController {
 
     private final CourierRegistrationService courierRegistrationService;
@@ -58,8 +62,18 @@ public class CourierController {
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @SneakyThrows
     @PostMapping("/payout-calculation")
     public CourierPayoutResultModel calculate(@RequestBody CourierPayoutCalculationInput input) {
+        log.info("Calculating");
+
+        if (Math.random() < 0.5) {
+            throw new RuntimeException();
+        }
+
+        int millis = new Random().nextInt(400);
+        Thread.sleep(millis);
+
         BigDecimal courierPayout = courierPayoutService.calculate(input.getDistanceInKm());
         return new CourierPayoutResultModel(courierPayout);
     }
