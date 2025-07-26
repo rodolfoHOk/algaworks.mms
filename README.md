@@ -284,3 +284,7 @@ Circuit Breaker
 [Código Fonte](/algadelivery/microsservices/)
 
 ## Aula 04
+
+### Próximo nível
+
+[Especialista Microsserviços PDF](/files/a4/especialista-microsservicos.pdf)
